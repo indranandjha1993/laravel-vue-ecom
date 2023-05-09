@@ -39,7 +39,7 @@ class OrderController extends Controller
 
     public function view(Order $order)
     {
-        $order->load('items.product');
+        $order->load(['items.product', 'user.customer.shippingAddress', 'user.customer.billingAddress']);
         return new OrderResource($order);
     }
 
